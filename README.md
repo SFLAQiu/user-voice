@@ -1,6 +1,11 @@
-# user-voice
+<div align="left">
+  <img src="web/public/logo.svg" width="56" align="top" alt="logo" />
+  <h1 style="display:inline;vertical-align:middle;margin-left:8px">user-voice</h1>
+</div>
 
 用户反馈平台（Go + React）— 自动从多种数据源采集用户反馈，通过 LLM 智能分类归因，提供可视化 Dashboard 和告警通知。
+
+📖 [功能介绍与使用教程](docs/TUTORIAL.md)（含截图演示）
 
 ## 功能特性
 
