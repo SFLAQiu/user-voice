@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# 编辑器
+.idea/
+.vscode/
+*.swp
+
+# Go
+*.test
+*.out
+/feedback
+/api
+
+# 前端
+web/node_modules/
+web/dist/
+
+# 本地配置（含 DSN、JWT secret、加密密钥、管理员密码，禁止入库）
+configs/config.yaml
+configs/config2.yaml
+configs/config3.yaml
+configs/config*.local.yaml
+
+# 本地数据/索引
+.codegraph/
+*.db
+*.sqlite
+*.log

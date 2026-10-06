@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.feedback-table .ant-table-thead > tr > th {
+  white-space: nowrap;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #f0f2f5;
+}
+
+/* 页面级 Card 铺满 Content 区域 */
+.ant-layout-content > .ant-card {
+  min-height: 100%;
+}
+
+/* 表格横向滚动协调 */
+.ant-table-content {
+  overflow-x: auto;
+}
+
+/* Dashboard 网格布局：react-grid-layout 样式增强 */
+.dashboard-grid .react-grid-item {
+  transition: all 200ms ease;
+  transition-property: left, top, width, height;
+}
+.dashboard-grid .react-grid-item.react-draggable-dragging,
+.dashboard-grid .react-grid-item.react-grid-item-resizing {
+  transition: none;
+  z-index: 10;
+  opacity: 0.9;
+  background: rgba(128, 128, 128, 0.08);
+}
+.dashboard-grid .react-grid-placeholder,
+.dashboard-grid .react-grid-item.react-grid-placeholder,
+.dashboard-grid .react-grid-item.react-grid-placeholder.placeholder-resizing {
+  background: rgba(128, 128, 128, 0.18);
+  border: 1px dashed rgba(128, 128, 128, 0.45);
+  border-radius: 8px;
+  opacity: 1;
+}
+.dashboard-grid .react-grid-item > .react-resizable-handle {
+  width: 24px;
+  height: 24px;
+  bottom: 0;
+  right: 0;
+  background: transparent;
+  z-index: 20;
+}
+.dashboard-grid .react-grid-item > .react-resizable-handle::after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #bbb;
+  border-bottom: 2px solid #bbb;
+}
+.dashboard-grid .react-grid-item > .react-resizable-handle:hover::after {
+  border-color: #1890ff;
+}
+
+/* 编辑模式：触控板/触摸屏支持 */
+.dashboard-grid.editing {
+  touch-action: none;
+}
+.dashboard-grid.editing .panel-drag-handle {
+  touch-action: none;
+}
+.dashboard-grid.editing .react-grid-item > .react-resizable-handle {
+  touch-action: none;
+  pointer-events: auto;
+  opacity: 1;
+}
+/* 编辑模式视觉提示：面板虚线边框 */
+.dashboard-grid.editing .react-grid-item {
+  outline: 2px dashed #1890ff;
+  outline-offset: -2px;
+}

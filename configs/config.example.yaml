@@ -1,0 +1,41 @@
+# 通用配置模板（参考用，不直接加载）
+# 实际配置存放在 configs/config.yaml（首次启动无此文件时进入网页初始化向导）
+# 加载方式: 默认 configs/config.yaml，或 -config <路径>，或 FEEDBACK_* 环境变量覆盖
+
+server:
+  addr: ":8080"
+  read_timeout: 30s
+  write_timeout: 30s
+
+database:
+  # 各环境 DSN 不同，请按实际填写
+  dsn: "root:123456@tcp(127.0.0.1:3306)/feedback?charset=utf8mb4&parseTime=True&loc=Local"
+  max_open_conns: 50
+  max_idle_conns: 10
+  conn_max_lifetime: 1h
+
+jwt:
+  # 生产环境务必替换为强密钥
+  secret: "change-me-please-32-bytes-or-more-secret"
+  expire: 8h
+
+encryption:
+  # 32-byte base64 (openssl rand -base64 32)，各环境独立生成
+  key: "REPLACE_WITH_BASE64_32B_KEY=="
+
+admin:
+  username: "admin"
+  password: "admin123"
+
+login_limit:
+  max_attempts: 5
+  window: 5m
+
+log:
+  # 本地 → debug/info；生产 → info/warn
+  level: "info"
+  file: ""
+
+cors:
+  allow_origins:
+    - "http://localhost:5173"

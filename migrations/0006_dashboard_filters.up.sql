@@ -1,0 +1,1 @@
+ALTER TABLE dashboards ADD COLUMN filters_json JSON DEFAULT NULL COMMENT '仪表盘全局筛选条件' AFTER layout_json;

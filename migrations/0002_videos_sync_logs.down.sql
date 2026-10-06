@@ -1,0 +1,2 @@
+ALTER TABLE feedbacks DROP COLUMN videos;
+DROP TABLE IF EXISTS sync_logs;

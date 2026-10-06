@@ -1,0 +1,40 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpass}
+      MYSQL_DATABASE: feedback
+      MYSQL_USER: feedback
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-feedback}
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+      - --ngram_token_size=2
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: .
+    restart: unless-stopped
+    environment:
+      FEEDBACK_DATABASE_DSN: "feedback:${MYSQL_PASSWORD:-feedback}@tcp(mysql:3306)/feedback?charset=utf8mb4&parseTime=True&loc=Local"
+      FEEDBACK_JWT_SECRET: ${JWT_SECRET:-change-me-please-32-bytes-or-more-secret}
+      FEEDBACK_ENCRYPTION_KEY: ${APP_ENCRYPTION_KEY:-REPLACE_WITH_BASE64_32B_KEY==}
+      FEEDBACK_ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      FEEDBACK_ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin123}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql_data:

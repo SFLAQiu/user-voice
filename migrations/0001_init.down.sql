@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS alert_records;
+DROP TABLE IF EXISTS alert_templates;
+DROP TABLE IF EXISTS alert_rule_channels;
+DROP TABLE IF EXISTS alert_channels;
+DROP TABLE IF EXISTS alert_rules;
+DROP TABLE IF EXISTS panels;
+DROP TABLE IF EXISTS dashboards;
+DROP TABLE IF EXISTS audit_logs;
+DROP TABLE IF EXISTS sync_cursors;
+DROP TABLE IF EXISTS feedbacks;
+DROP TABLE IF EXISTS data_sources;
+DROP TABLE IF EXISTS login_attempts;
+DROP TABLE IF EXISTS users;
